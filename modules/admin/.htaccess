@@ -1,0 +1,9 @@
+RewriteCond %{REQUEST_URI} !^/modules/admin/web/(js|vendors|css)/
+
+RewriteCond %{REQUEST_URI} !index.php
+
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^.*$ modules/admin/web/index.php

@@ -21,7 +21,7 @@ class MoneyAsset extends AssetBundle
         'web/vendors/bootstrap/dist/css/bootstrap.min.css',
         'web/vendors/font-awesome/css/font-awesome.min.css',
         'web/vendors/nprogress/nprogress.css',
-        'web/css/custom.min.css',
+        'web/css/custom.css',
     ];
     public $js = [
         //'web/vendors/jquery/dist/jquery.min.js',
@@ -30,7 +30,7 @@ class MoneyAsset extends AssetBundle
         'web/vendors/nprogress/nprogress.js',
         'web/vendors/echarts/dist/echarts.min.js',
         'web/vendors/echarts/map/js/world.js',
-        'web/js/custom.min.js',
+        'web/js/custom.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

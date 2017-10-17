@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use Yii;
 use app\modules\admin\models\Product;
+use app\modules\admin\models\Category;
 use app\modules\admin\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -14,6 +15,7 @@ use yii\filters\VerbFilter;
  */
 class ProductController extends Controller
 {
+    public $enableCsrfValidation = false;
     public $layout = 'adminLayout';
     /**
      * @inheritdoc
@@ -36,7 +38,6 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
-        
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -81,14 +82,19 @@ class ProductController extends Controller
      */
     public function actionCreate()
     {
-        
         $model = new Product();
+        $categories = Category::find()->all();
+        foreach ($categories as $value) {
+            $arrCategories[$value->name]=$value->name;
+        }
+        $arrCategories['custom']='Ввести свой вариант';
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'arrCategories' => $arrCategories,
             ]);
         }
     }
@@ -113,6 +119,15 @@ class ProductController extends Controller
         }
     }
 
+    public function actionList($value)
+    {
+        if($value=='custom')
+            echo    '<label class="control-label" for="product-type">Категория</label>
+                    <input type="text" id="product-type" placeholder="Введите тип(Кольца, Серьги, Комплекты и т.п.)" class="form-control" name="Product[type]" maxlength="191">
+                    <div class="help-block"></div>';
+        else
+            echo 'false';
+    }
     /**
      * Deletes an existing Product model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

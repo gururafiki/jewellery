@@ -18,7 +18,7 @@ class BuySearch extends Buy
     public function rules()
     {
         return [
-            [['id', 'product_id', 'product_name', 'product_price', 'count', 'day', 'month', 'year'], 'integer'],
+            [['id', 'product_id', 'product_name', 'product_price', 'total_price', 'count', 'day', 'month', 'year'], 'integer'],
             [['username', 'date'], 'safe'],
         ];
     }

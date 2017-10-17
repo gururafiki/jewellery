@@ -2752,7 +2752,7 @@ if (typeof NProgress != 'undefined') {
 		/* ECHRTS */
 	
 		
-		function init_echarts() {
+		function init_echarts(totalsales,totalbuys,sale1, sale2, sale3, sale4, sale5, sale6, sale7, sale8, sale9, sale10, sale11, sale12, buy1, buy2, buy3, buy4, buy5, buy6, buy7, buy8, buy9, buy10, buy11, buy12) {
 		
 				if( typeof (echarts) === 'undefined'){ return; }
 				console.log('init_echarts');
@@ -2979,14 +2979,14 @@ if (typeof NProgress != 'undefined') {
 
 				  echartBar.setOption({
 					title: {
-					  text: 'Graph title',
-					  subtext: 'Graph Sub-text'
+					  text: 'График оборота',
+					  subtext: 'Покупки и продажи'
 					},
 					tooltip: {
 					  trigger: 'axis'
 					},
 					legend: {
-					  data: ['sales', 'purchases']
+					  data: [ 'продажи', 'покупки']
 					},
 					toolbox: {
 					  show: false
@@ -2994,51 +2994,47 @@ if (typeof NProgress != 'undefined') {
 					calculable: false,
 					xAxis: [{
 					  type: 'category',
-					  data: ['1?', '2?', '3?', '4?', '5?', '6?', '7?', '8?', '9?', '10?', '11?', '12?']
+					  data: ['12 недель назад', '11', '10', '9', '8', '7', '6', '5', '4', '3', '2', 'эта неделя']
 					}],
 					yAxis: [{
 					  type: 'value'
 					}],
 					series: [{
-					  name: 'sales',
+					  name: 'продажи',
 					  type: 'bar',
-					  data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+					  data: [sale1, sale2, sale3, sale4, sale5, sale6, sale7, sale8, sale9, sale10, sale11, sale12],
 					  markPoint: {
 						data: [{
 						  type: 'max',
-						  name: '???'
+						  name: 'Самый большой чек'
 						}, {
 						  type: 'min',
-						  name: '???'
+						  name: 'Нижнее значение оборота продажи'
 						}]
 					  },
 					  markLine: {
 						data: [{
 						  type: 'average',
-						  name: '???'
+						  name: 'Среднее значение чека за день'
 						}]
 					  }
 					}, {
-					  name: 'purchases',
+					  name: 'покупки',
 					  type: 'bar',
-					  data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+					  data: [buy1, buy2, buy3, buy4, buy5, buy6, buy7, buy8, buy9, buy10, buy11, buy12],
 					  markPoint: {
 						data: [{
-						  name: 'sales',
-						  value: 182.2,
-						  xAxis: 7,
-						  yAxis: 183,
+						  type: 'max',
+						  name: 'Пик суммы закупок'
 						}, {
-						  name: 'purchases',
-						  value: 2.3,
-						  xAxis: 11,
-						  yAxis: 3
+						  type: 'min',
+						  name: 'Нижнее значение суммы закупок'
 						}]
 					  },
 					  markLine: {
 						data: [{
 						  type: 'average',
-						  name: '???'
+						  name: 'Среднее значение чека закупок'
 						}]
 					  }
 					}]
@@ -5048,7 +5044,6 @@ if (typeof NProgress != 'undefined') {
 		init_SmartWizard();
 		init_EasyPieChart();
 		init_charts();
-		init_echarts();
 		init_morris_charts();
 		init_skycons();
 		init_select2();

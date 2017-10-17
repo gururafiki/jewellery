@@ -73,6 +73,11 @@ AdminAsset::register($this);
                       <li><a href="/admin/product">Продукты</a></li>
                       <li><a href="/admin/seller">Партнеры</a></li>
                       <li><a href="/admin/user">Клиенты</a></li>
+                      <li><a href="/admin/category">Категории</a></li>
+                      <li><a href="/admin/metal">Металы</a></li>
+                      <li><a href="/admin/insert">Вставки</a></li>
+                      <li><a href="/admin/size">Размеры</a></li>
+                      <li><a href="/admin/gender">Пол</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Отчеты <span class="fa fa-chevron-down"></span></a>

@@ -55,7 +55,7 @@ $config = [
                 'init' => 'init/init',
                 'services' => 'site/services',
                 'product' => 'site/product',
-
+                'product/list/<value>' => 'admin/product/list',
             ],
         ],
     ],

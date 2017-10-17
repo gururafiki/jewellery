@@ -35,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'day',
             'month',
             'year',
-            'count',
-            'total',
+            'count_transactions',
+            'total_price',
         ],
     ]) ?>
 

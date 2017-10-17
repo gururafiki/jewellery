@@ -33,7 +33,7 @@ class Seller extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['day', 'month', 'year', 'count', 'total'], 'integer'],
+            [['day', 'month', 'year', 'count_transactions', 'total_price'], 'integer'],
             [['name', 'group', 'date'], 'string', 'max' => 191],
         ];
     }
@@ -51,8 +51,8 @@ class Seller extends \yii\db\ActiveRecord
             'day' => 'Day',
             'month' => 'Month',
             'year' => 'Year',
-            'count' => 'Кол-во покупок',
-            'total' => 'На сумму',
+            'count_transactions' => 'Кол-во покупок',
+            'total_price' => 'На сумму',
         ];
     }
 }

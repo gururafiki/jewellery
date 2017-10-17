@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'product_price')->textInput() ?>
 
     <?= $form->field($model, 'count')->textInput() ?>
+    
+    <?= $form->field($model, 'total_price')->textInput() ?>
 
     <?= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
 

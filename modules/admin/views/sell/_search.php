@@ -25,6 +25,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'product_price') ?>
 
+    <?= $form->field($model, 'total_price') ?>
+    
     <?php // echo $form->field($model, 'count') ?>
 
     <?php // echo $form->field($model, 'date') ?>

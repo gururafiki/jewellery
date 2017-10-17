@@ -11,6 +11,7 @@ $this->title = 'Покупки';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="buy-index">
+    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -28,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'product_name',
             'product_price',
             'count',
+            'total_price',
             'date',
             // 'day',
             // 'month',

@@ -34,7 +34,7 @@ class Buy extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_id', 'product_name', 'product_price', 'count', 'day', 'month', 'year'], 'integer'],
+            [['product_id', 'product_name', 'product_price','total_price', 'count', 'day', 'month', 'year'], 'integer'],
             [['username', 'date'], 'string', 'max' => 191],
         ];
     }
@@ -46,11 +46,12 @@ class Buy extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Имя покупателя',
+            'username' => 'Имя продавца',
             'product_id' => 'ID товара',
             'product_name' => 'Наименования товара',
             'product_price' => 'Цена товара',
             'count' => 'Кол-во в чеке',
+            'total_price' => 'Сумма',
             'date' => 'Дата и время',
             'day' => 'Day',
             'month' => 'Month',

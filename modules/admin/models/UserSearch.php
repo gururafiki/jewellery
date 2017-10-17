@@ -18,7 +18,7 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'count', 'total', 'day', 'month', 'year'], 'integer'],
+            [['id',  'count_transactions', 'total_price', 'day', 'month', 'year'], 'integer'],
             [['name', 'group', 'key', 'login', 'password', 'date'], 'safe'],
         ];
     }

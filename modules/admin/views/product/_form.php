@@ -36,7 +36,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'gender')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'type')->dropDownList($arrCategories,[
+        'prompt' => '',
+        'onchange' => '
+                $.post("/product/list/'.'"+$(this).val(), function(data){
+                    if (data.length>10){
+                        $("div.field-product-type").html(data);
+                    }
+                });',]) ?>
 
     <?= $form->field($model, 'producer')->textInput(['maxlength' => true]) ?>
 
@@ -48,7 +55,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'profit_sum')->textInput() ?>
 
-    <?= $form->field($model, 'count')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'count_total')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'count_available')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'count_sold')->textInput(['maxlength' => true]) ?>
 

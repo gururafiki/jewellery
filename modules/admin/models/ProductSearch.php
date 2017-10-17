@@ -18,7 +18,7 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'price_buy', 'profit', 'price_sell', 'count', 'count_sold'], 'integer'],
+            [['price_buy', 'profit', 'price_sell', 'count_total','count_available', 'count_sold'], 'integer'],
             [['name', 'metal_1', 'metal_2', 'metal_3', 'metal_4', 'metal_5', 'insert_1', 'insert_2', 'insert_3', 'insert_4', 'insert_5', 'gender', 'type', 'producer', 'weight_metals', 'weight_inserts', 'carat_inserts'], 'safe'],
             [['profit_sum', 'size', 'weight_full'], 'number'],
         ];

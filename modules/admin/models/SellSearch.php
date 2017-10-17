@@ -18,7 +18,7 @@ class SellSearch extends Sell
     public function rules()
     {
         return [
-            [['id', 'product_id', 'product_name', 'product_price', 'count', 'day', 'month', 'year'], 'integer'],
+            [['id', 'product_id', 'product_name', 'product_price','total_price', 'count', 'day', 'month', 'year'], 'integer'],
             [['username', 'date'], 'safe'],
         ];
     }
@@ -63,6 +63,7 @@ class SellSearch extends Sell
             'product_id' => $this->product_id,
             'product_name' => $this->product_name,
             'product_price' => $this->product_price,
+            'total_price' => $this->total_price,
             'count' => $this->count,
             'day' => $this->day,
             'month' => $this->month,

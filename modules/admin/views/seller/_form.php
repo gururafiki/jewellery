@@ -24,9 +24,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'year')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'count')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'count_transactions')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'total')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'total_price')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

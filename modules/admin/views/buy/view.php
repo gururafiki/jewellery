@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'product_name',
             'product_price',
             'count',
+            'total_price',
             'date',
             'day',
             'month',

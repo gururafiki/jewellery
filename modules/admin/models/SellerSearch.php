@@ -18,7 +18,7 @@ class SellerSearch extends Seller
     public function rules()
     {
         return [
-            [['id', 'day', 'month', 'year', 'count', 'total'], 'integer'],
+            [['id', 'day', 'month', 'year',  'count_transactions', 'total_price'], 'integer'],
             [['name', 'group', 'date'], 'safe'],
         ];
     }

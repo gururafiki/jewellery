@@ -36,7 +36,7 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['count', 'total', 'day', 'month', 'year'], 'integer'],
+            [[ 'count_transactions', 'total_price', 'day', 'month', 'year'], 'integer'],
             [['name', 'group', 'key', 'login', 'password', 'date'], 'string', 'max' => 191],
         ];
     }
@@ -53,8 +53,8 @@ class User extends \yii\db\ActiveRecord
             'key' => 'Ключ',
             'login' => 'Login',
             'password' => 'Password',
-            'count' => 'Кол-во продаж',
-            'total' => 'На сумму',
+            'count_transactions' => 'Кол-во покупок',
+            'total_price' => 'На сумму',
             'date' => 'Дата и время',
             'day' => 'Day',
             'month' => 'Month',

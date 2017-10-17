@@ -50,7 +50,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price_buy', 'profit', 'price_sell', 'count', 'count_sold'], 'integer'],
+            [['price_buy', 'profit', 'price_sell', 'count_total','count_available', 'count_sold'], 'integer'],
             [['profit_sum', 'size', 'weight_full'], 'number'],
             [['name', 'metal_1', 'metal_2', 'metal_3', 'metal_4', 'metal_5', 'insert_1', 'insert_2', 'insert_3', 'insert_4', 'insert_5', 'gender', 'type', 'producer', 'weight_metals', 'weight_inserts', 'carat_inserts'], 'string', 'max' => 191],
         ];
@@ -81,7 +81,8 @@ class Product extends \yii\db\ActiveRecord
             'profit' => 'Наценка',
             'price_sell' => 'Цена продажи',
             'profit_sum' => 'Прибыль',
-            'count' => 'Кол-во в наличии',
+            'count_total' => 'Кол-во всего',
+            'count_available' => 'Кол-во в наличии',
             'count_sold' => 'Кол-во продано',
             'size' => 'Размер',
             'weight_full' => 'Вес изделия',

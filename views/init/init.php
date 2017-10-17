@@ -16,8 +16,62 @@
 		$product->insert_4=$insert[4];
 		$product->insert_5=$insert[5];
 
+		foreach ($metal as $key => $value) {
+			if($value!='none'){
+				$metal=R::findOne('metals','name = ?',array($value));
+				if(!isset($metal->weight)){
+					$metal=R::dispense('metals');
+					$metal->name=$value;
+					$metal->weight=0;
+				}
+				$metal->weight+=$weight_metals[$value]*$count;
+				$metal->count_unical++;
+				$metal->count_total+=$count;
+				$metal->count_available+=$count;
+				$metal->count_sold+=$count_sold;
+				$metal->weight_sold+=0.1;
+				$metal->weight_available+=$weight_metals[$value]*$count;
+				// R::store($metal);
+			}
+		}
+
+		foreach ($insert as $key => $value) {
+			if($value!='none'){
+				$insert=R::findOne('inserts','name = ?',array($value));
+				if(!isset($insert->weight)){
+					$insert=R::dispense('inserts');
+					$insert->name=$value;
+				}
+				$insert->weight+=$weight_inserts[$value]*$count;
+				$insert->carat+=$carat_inserts[$value]*$count;
+				$insert->count_unical++;
+				$insert->count_total+=$count;
+				$insert->count_available+=$count;
+				$insert->count_sold+=$count_sold;
+				$insert->weight_sold+=0.1;
+				$insert->weight_available+=$weight_inserts[$value]*$count;
+				// R::store($insert);
+			}
+		}
+
 		$product->gender=$gender;
+		$gen=R::dispense('genders');
+		$gen->name=$gender;
+		$gen->count_unical++;
+		$gen->count_total+=$count;
+		$gen->count_sold=0;
+		$gen->count_available+=$count;
+		// R::store($gen);
+
 		$product->type=$type;
+		$category=R::dispense('categories');
+		$category->name=$type;
+		$category->count_unical++;
+		$category->count_total+=$count;
+		$category->count_sold=0;
+		$category->count_available+=$count;
+		R::store($category);
+
 		$product->producer=$producer;
 
 		$product->price_buy=$price_buy;
@@ -30,15 +84,21 @@
 			$product->profit=$product->price_sell/$product->price_buy;
 		}
 		$product->profit_sum=$product->price_sell-$product->price_buy;
-		$product->count=3;
-		$product->count_sold=0;
+		$product->count_total=3;
+		$product->count_available=2;
+		$product->count_sold=1;
 
 		$product->size=$size;
+		$size_s=R::dispense('sizes');
+		$size_s->name=$size;
+		$size_s->type=$type;
+		$size_s->count+=$count;
+		// R::store($size_s);
 		$product->weight_full=$weight_full;
 		$product->weight_metals=json_encode($weight_metals);
 		$product->weight_inserts=json_encode($weight_inserts);
 		$product->carat_inserts=json_encode($carat_inserts);
-		R::store($product);
+		// R::store($product);
 	}
 
 	function add_seller($name,$group,$product_id){
@@ -50,6 +110,10 @@
         $user->month=date("m", time());
         $user->year=date("Y", time());
 
+		$user->count_available=2;
+		$user->count_unical++;
+		$user->count_sold=1;
+
 		$transaction=R::dispense('buys');
 		$transaction->username=$name;
 		$transaction->product_id=$product_id;
@@ -60,11 +124,13 @@
         $transaction->day=date("d", time());
         $transaction->month=date("m", time());
         $transaction->year=date("Y", time());
-
-		$user->count=R::count('Buys','username = ?',array($name));
-		$user->total-=$product->price;
-
+		$user->count_total+=$transaction->count;
+		$user->total_price+=$transaction->product_price*$transaction->count;
         R::store($transaction);
+
+
+		$user->count_transactions+=R::count('buys','username = ?',array($name));
+
 		R::store($user);
 	}
 
@@ -75,8 +141,6 @@
 		$user->key='afiotc7o6acbSn89n3cn';
 		$user->login=$login;
 		$user->password=$password;
-		$user->count=0;
-		$user->total=0;
         $user->date=date("d.m.Y (H:i:s)", time());
         $user->day=date("d", time());
         $user->month=date("m", time());
@@ -92,11 +156,11 @@
         $transaction->day=date("d", time());
         $transaction->month=date("m", time());
         $transaction->year=date("Y", time());
-
-		$user->count=R::count('Sells','username = ?',array($name));
-		$user->total+=$product->price;
-
+		$user->total_price+=$transaction->product_price;
         R::store($transaction);
+
+		$user->count_transactions=R::count('sells','username = ?',array($name));
+
 		R::store($user);
 	}
 	//product
@@ -140,7 +204,7 @@
 	$password='admin';
 	$product_id=1;
     //end user
-	add_user($name,$group,$login,$password,$product_id,$product_name,$product_price,$date);
+	// add_user($name,$group,$login,$password,$product_id,$product_name,$product_price,$date);
 
 
 	
@@ -150,7 +214,7 @@
 	$group='own';
 	$product_id=1;
 	//end seller
-	add_seller($name,$group,$product_id);
+	// add_seller($name,$group,$product_id);
 
 
 	

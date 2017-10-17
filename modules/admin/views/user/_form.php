@@ -22,9 +22,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'count')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'count_transactions')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'total')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'total_price')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
 
